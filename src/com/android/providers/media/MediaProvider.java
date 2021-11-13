@@ -577,7 +577,7 @@ public class MediaProvider extends ContentProvider {
                     if (pkg != null) {
                         invalidateLocalCallingIdentityCache(pkg, "package " + intent.getAction());
                     } else {
-                        Log.w(TAG, "Failed to retrieve package from intent: " + intent.getAction());
+                        Log.e(TAG, "Failed to retrieve package from intent: " + intent.getAction());
                     }
                     break;
             }
@@ -1320,7 +1320,7 @@ public class MediaProvider extends ContentProvider {
                 int.class, int.class);
             return (Boolean) isAppCloneUserPair.invoke(mStorageManager, userId1, userId2);
         } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
-            Log.w(TAG, "isAppCloneUserPair failed. Users: " + userId1 + " and " + userId2);
+            Log.e(TAG, "isAppCloneUserPair failed. Users: " + userId1 + " and " + userId2);
             return false;
         }
     }
@@ -1340,7 +1340,7 @@ public class MediaProvider extends ContentProvider {
         }
         boolean result = isAppCloneUserPair(0, userId);
 
-        Log.w(TAG, "isAppCloneUserPair for user " + userId + ": " + result);
+        Log.e(TAG, "isAppCloneUserPair for user " + userId + ": " + result);
 
         return result;
     }
